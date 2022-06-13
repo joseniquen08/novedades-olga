@@ -1,0 +1,14 @@
+{
+  "name": "novedades-olga",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "front:dev": "cd frontend && yarn dev",
+    "back:dev": "cd backend && yarn run start:dev"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}

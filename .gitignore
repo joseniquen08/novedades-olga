@@ -1,0 +1,20 @@
+# dependencies
+*/node_modules/
+
+# next.js
+*/.next
+
+# production
+*/build
+
+# local env files
+.env
+.env.local
+
+# vercel
+.vercel
+
+# typescript
+*/*.tsbuildinfo
+
+yarn.lock
