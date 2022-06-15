@@ -1,12 +1,24 @@
+import '@fontsource/amatic-sc/700.css';
+import '@fontsource/poppins/400.css';
+
 import { ChakraProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import theme from '../theme/theme.chakra';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App ({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <>
+      <Head>
+        <title>Novedades Olga</title>
+        <meta name="description" content="Tienda electrónica." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </>
   )
 }
 
-export default MyApp;
+export default App;
