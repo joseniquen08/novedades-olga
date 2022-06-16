@@ -1,5 +1,7 @@
-import { Box, chakra, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/react';
+import { Box, chakra, Heading, HStack, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
+import { FaSearch } from 'react-icons/fa';
+import { CategoryButton } from './CategoryButton';
 
 export const Navbar = () => {
   return (
@@ -12,20 +14,24 @@ export const Navbar = () => {
     >
       <VStack
         paddingX={{ base: '1rem', md: '2.5rem' }}
+        paddingY='0.35rem'
         width='full'
         justifyContent='center'
-        height='4.5rem'
         borderBottom='1px solid'
         borderBottomColor='#d6d3d1'
+        spacing={1}
       >
-        <Flex
+        <HStack
           width='full'
           alignItems='center'
           justifyContent='space-between'
           marginX='auto'
+          position='relative'
         >
           <HStack
             alignItems='center'
+            spacing={1}
+            zIndex={1}
           >
             <Box
               width='3rem'
@@ -34,17 +40,18 @@ export const Navbar = () => {
             >
               <Image
                 src='/images/isotipo.png'
+                alt='Logo'
                 layout='fill'
               />
             </Box>
             <Heading
-              marginLeft='0.5rem'
               fontSize='3xl'
             >Novedades Olga</Heading>
           </HStack>
           <HStack
             alignItems='center'
             spacing={3}
+            zIndex={1}
           >
             <HStack
               alignItems='center'
@@ -52,17 +59,38 @@ export const Navbar = () => {
             >
               <HStack
                 display={{ base: 'none', md: 'inline-flex' }}
+                alignItems='center'
                 marginRight='1rem'
-                spacing={2}
+                spacing={3}
               >
-                <Text>Tejido</Text>
-                <Text>Costura</Text>
-                <Text>Joyas</Text>
-                <Text>Temporadas</Text>
+                {/* <CategoryButton category='Temporadas' route='temporadas'/> */}
               </HStack>
             </HStack>
           </HStack>
-        </Flex>
+          <HStack position='absolute' left={0} right={0} zIndex={0} justifyContent='center'>
+            <InputGroup width='22rem' alignItems='center'>
+              <Input
+                fontSize='0.9rem'
+                height='auto'
+                paddingY='0.35rem'
+                _focus={{
+                  boxShadow: 'none',
+                }}
+              />
+              <InputRightElement
+                height='auto'
+                paddingY='0.35rem'
+              >
+                <FaSearch/>
+              </InputRightElement>
+            </InputGroup>
+          </HStack>
+        </HStack>
+        <HStack alignItems='center' justifyContent='center' width='full'>
+          <CategoryButton category='Tejido' route='tejido'/>
+          <CategoryButton category='Costura' route='costura'/>
+          <CategoryButton category='Joyas' route='joyas'/>
+        </HStack>
       </VStack>
     </chakra.nav>
   )

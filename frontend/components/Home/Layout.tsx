@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { Navbar } from '../Shared/Navbar';
 
 type Props = {
-  children: JSX.Element,
+  children: JSX.Element;
 }
 
 export const Layout = ({ children }: Props) => {
