@@ -20,6 +20,8 @@ export const CategoryButton = ({ category , route}: Props) => {
       paddingY='0.35rem'
       fontSize='0.95rem'
       onClick={() => router.push(`/categoria/${route}`)}
-    >{category}</Button>
+    >
+      {category}
+    </Button>
   )
 }

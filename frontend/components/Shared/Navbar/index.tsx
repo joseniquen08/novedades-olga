@@ -2,6 +2,7 @@ import { Box, chakra, Heading, HStack, Input, InputGroup, InputRightElement, VSt
 import Image from 'next/image';
 import { FaSearch } from 'react-icons/fa';
 import { CategoryButton } from './CategoryButton';
+import { SignButton } from './SignButton';
 
 export const Navbar = () => {
   return (
@@ -14,12 +15,12 @@ export const Navbar = () => {
     >
       <VStack
         paddingX={{ base: '1rem', md: '2.5rem' }}
-        paddingY='0.35rem'
+        paddingY='0.5rem'
         width='full'
         justifyContent='center'
         borderBottom='1px solid'
         borderBottomColor='#d6d3d1'
-        spacing={1}
+        spacing={0.5}
       >
         <HStack
           width='full'
@@ -63,7 +64,7 @@ export const Navbar = () => {
                 marginRight='1rem'
                 spacing={3}
               >
-                {/* <CategoryButton category='Temporadas' route='temporadas'/> */}
+                <SignButton/>
               </HStack>
             </HStack>
           </HStack>
@@ -75,11 +76,14 @@ export const Navbar = () => {
                 paddingY='0.35rem'
                 _focus={{
                   boxShadow: 'none',
+                  borderColor: '#aaaaaa'
                 }}
+                placeholder='Buscar'
               />
               <InputRightElement
-                height='auto'
+                height='full'
                 paddingY='0.35rem'
+                color='gray.500'
               >
                 <FaSearch/>
               </InputRightElement>

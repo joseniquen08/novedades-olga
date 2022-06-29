@@ -2,13 +2,25 @@ import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Application, NextFunction, Request, Response } from 'express';
+import { resolvers as scalarResolvers, typeDefs as scalarTypeDefs } from 'graphql-scalars';
+import { resolvers, typeDefs } from './graphql';
 
 dotenv.config();
 
 const app: Application = express();
 
-export async function start(): Promise<void> {
-  const apolloServer = new ApolloServer({});
+export async function start () {
+
+  const apolloServer = new ApolloServer({
+    typeDefs: [
+      ...scalarTypeDefs,
+      typeDefs,
+    ],
+    resolvers: [
+      scalarResolvers,
+      resolvers,
+    ],
+  });
 
   await apolloServer.start();
   apolloServer.applyMiddleware({ app, path: '/api' });
@@ -22,7 +34,7 @@ export async function start(): Promise<void> {
   });
 
   app.listen(`${process.env.PORT}`, async () => {
-    console.log(`Server started on port http://localhost:${process.env.PORT}/api`);
+    console.log(`Server started on port ${process.env.PORT}/api`);
   });
 }
 

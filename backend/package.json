@@ -1,29 +1,15 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "E-commerce",
   "main": "index.js",
-  "author": "Jose Ñiquen",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start:dev": "ts-node-dev api/index.ts",
-    "start": "tsc && node build/api/index.js"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/crypto-js": "^4.1.1",
-    "@types/express": "^4.17.13",
-    "@types/fs-extra": "^9.0.13",
-    "@types/jsonwebtoken": "^8.5.8",
-    "@types/multer": "^1.4.7",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^4.7.3"
+    "start:dev": "ts-node-dev api/index.ts"
   },
   "dependencies": {
-    "@sendgrid/mail": "^7.7.0",
-    "apollo-server-core": "^3.8.2",
-    "apollo-server-express": "^3.8.2",
+    "apollo-server-core": "^3.9.0",
+    "apollo-server-express": "^3.9.0",
     "cloudinary": "^1.30.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
@@ -33,7 +19,17 @@
     "graphql": "^16.5.0",
     "graphql-scalars": "^1.17.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.6",
+    "mongoose": "^6.4.1",
     "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/crypto-js": "^4.1.1",
+    "@types/express": "^4.17.13",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/multer": "^1.4.7",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
   }
 }

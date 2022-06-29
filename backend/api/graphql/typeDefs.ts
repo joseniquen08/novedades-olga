@@ -1,13 +1,20 @@
-import { gql } from "apollo-server-core";
+import { gql } from "apollo-server-express";
+import { Auth } from "./Auth";
 
 const typeDefs = gql`
   type Error {
     message: String
   }
 
-  type Query {}
+  ${Auth.types}
 
-  type Mutation {}
+  type Query {
+    ${Auth.queries}
+  }
+
+  type Mutation {
+    ${Auth.mutations}
+  }
 `;
 
 export default typeDefs;
