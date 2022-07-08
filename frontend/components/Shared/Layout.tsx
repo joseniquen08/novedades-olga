@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { Navbar } from '../Shared/Navbar';
+import { Navbar } from '@comp-shared/Navbar';
 
 type Props = {
   children: JSX.Element;

@@ -1,11 +1,15 @@
-import { Text } from '@chakra-ui/react';
+import { Categories } from '@comp-home/Categories';
+import { Header } from '@comp-home/Header';
+import { Layout } from '@comp-shared/Layout';
 import type { NextPage } from 'next';
-import { Layout } from '../components/Home/Layout';
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <Text>Pedro</Text>
+      <>
+        <Header/>
+        <Categories/>
+      </>
     </Layout>
   )
 }

@@ -7,5 +7,7 @@ export type Register = {
 export type RegisterService = Omit<IUser, '_id' | 'image' | 'createdAt' | 'updatedAt'>;
 
 export type Login = {
-  input: Omit<IUser, '_id' | 'name' | 'image' | 'role' | 'provider' | 'createdAt' | 'updatedAt'>
+  input: Omit<IUser, '_id' | 'name' | 'role' | 'image' | 'provider' | 'createdAt' | 'updatedAt'>
 };
+
+export type LoginService = Omit<IUser, '_id' | 'name' | 'role' | 'image' | 'provider' | 'createdAt' | 'updatedAt'>;

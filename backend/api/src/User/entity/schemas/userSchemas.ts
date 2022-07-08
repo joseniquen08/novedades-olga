@@ -22,7 +22,7 @@ export const UserSchema = new Schema<IUser>({
   role: {
     type: String,
     default: 'client',
-    enum: ['client', 'admin'],
+    enum: ['client', 'admin', 'super'],
   },
   provider: {
     type: String,
