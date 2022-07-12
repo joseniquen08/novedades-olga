@@ -1,5 +1,5 @@
+import decodeToken from '@utils/decodeToken';
 import { NextRequest, NextResponse } from "next/server";
-import decodeToken from '../../../utils/decodeToken';
 
 export function middleware (req: NextRequest) {
   if (req.cookies['token']) {

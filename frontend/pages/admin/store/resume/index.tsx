@@ -1,13 +1,13 @@
-import { Home } from '@comp-admin/Home';
+import { Text } from '@chakra-ui/react';
 import { Layout } from '@comp-admin/Layout';
 import type { NextPage } from 'next';
 
-const Login: NextPage = () => {
+const Resume: NextPage = () => {
   return (
     <Layout>
-      <Home/>
+      <Text>Admin</Text>
     </Layout>
   )
 }
 
-export default Login;
+export default Resume;

@@ -69,7 +69,7 @@ export const Login = () => {
         }
       } else {
         cookies.set("token", data.loginAdmin.token, { path: '/' });
-        router.push("/admin/store/inicio");
+        router.push("/admin/store");
       }
     }
   }, [data, loading]);

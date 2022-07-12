@@ -25,6 +25,9 @@
       "@comp-home/*": [
         "components/Home/*"
       ],
+      "@utils/*": [
+        "utils/*"
+      ],
     },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
