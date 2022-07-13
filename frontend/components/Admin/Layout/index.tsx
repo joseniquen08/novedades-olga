@@ -1,5 +1,5 @@
-import { Box, HStack } from "@chakra-ui/react";
-import { Sidebar } from "./Sidebar";
+import { Box, HStack } from '@chakra-ui/react';
+import { Sidebar } from './Sidebar';
 
 type Props = {
   children: JSX.Element;

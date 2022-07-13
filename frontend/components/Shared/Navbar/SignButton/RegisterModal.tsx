@@ -1,12 +1,12 @@
 
-import { Button, Divider, FormControl, FormErrorMessage, FormLabel, HStack, Input, InputGroup, InputLeftElement, InputRightAddon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, VStack } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { Button, Divider, FormControl, FormErrorMessage, FormLabel, HStack, Input, InputGroup, InputLeftElement, InputRightAddon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, VStack } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
-import { HiOutlineIdentification, HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi";
-import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+import { HiOutlineIdentification, HiOutlineLockClosed, HiOutlineMail } from 'react-icons/hi';
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 
 type Props = {
   isOpen: boolean;
@@ -18,13 +18,13 @@ const MotionButton = motion(Button);
 
 export const RegisterModal = ({ isOpen, onClose, onOpenLogin }: Props) => {
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [emailError, setEmailError] = useState(false);
-  const [lengthPasswordError, setLengthPasswordError] = useState(false);
-  const [equalPasswordError, setEqualPasswordError] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [lengthPasswordError, setLengthPasswordError] = useState<boolean>(false);
+  const [equalPasswordError, setEqualPasswordError] = useState<boolean>(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);

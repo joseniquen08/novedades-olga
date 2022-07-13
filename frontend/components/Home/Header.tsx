@@ -1,11 +1,11 @@
-import { Box, chakra, Heading, HStack } from "@chakra-ui/react";
-import Image from "next/image";
-import { Autoplay, Pagination } from "swiper";
+import { Box, chakra, Heading, HStack } from '@chakra-ui/react';
+import Image from 'next/image';
+import { Autoplay, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const images_slider = [
   'photo4987812273682753990.jpg',
@@ -22,7 +22,7 @@ const images_slider = [
 export const Header = () => {
 
   const NextImage = chakra(Image, {
-    shouldForwardProp: (prop) => ["width", "height", "layout", "src", "alt"].includes(prop),
+    shouldForwardProp: (prop) => ['width', 'height', 'layout', 'src', 'alt'].includes(prop),
   });
 
   return (

@@ -11,14 +11,11 @@ export default NextAuth({
         return {
           id: profile.sub,
           name: profile.name,
-          username: profile.email.split('@')[0],
-          age: 0,
           email: profile.email,
           password: null,
-          role: 'user',
           image: profile.picture,
+          role: 'client',
           provider: 'google',
-          emailVerifiedV: true,
           createdAt: new Date(),
           updatedAt: new Date(),
         };
@@ -31,14 +28,11 @@ export default NextAuth({
         return {
           id: profile.id,
           name: profile.name,
-          username: profile.email.split('@')[0],
-          age: 0,
           email: profile.email,
           password: null,
-          role: 'user',
           image: profile.picture.data.url,
+          role: 'client',
           provider: 'facebook',
-          emailVerifiedV: true,
           createdAt: new Date(),
           updatedAt: new Date(),
         };
@@ -49,12 +43,9 @@ export default NextAuth({
     async session ({ session, token, user }) {
       session.user = {
         ...session.user,
-        username: user.username,
         role:  user.role,
         provider: user.provider,
-        age: user.age,
         id: user.id,
-        emailVerifiedV: user.emailVerifiedV,
       };
       return session;
     },

@@ -1,6 +1,6 @@
-import { Box, Button, chakra, SimpleGrid, Text } from "@chakra-ui/react";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import { Box, Button, chakra, SimpleGrid, Text } from '@chakra-ui/react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const callouts = [
   {
@@ -29,7 +29,7 @@ const callouts = [
 export const Categories = () => {
 
   const NextImage = chakra(Image, {
-    shouldForwardProp: (prop) => ["width", "height", "layout", "src", "alt"].includes(prop),
+    shouldForwardProp: (prop) => ['width', 'height', 'layout', 'src', 'alt'].includes(prop),
   });
 
   const router = useRouter();
@@ -50,7 +50,7 @@ export const Categories = () => {
         >
           <Text
             fontSize='2xl'
-            fontWeight={900}
+            fontWeight={700}
             color='gray.900'
           >
             Categorías

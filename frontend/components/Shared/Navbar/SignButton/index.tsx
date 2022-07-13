@@ -14,7 +14,9 @@ export const SignButton = () => {
         variant='ghost'
         color='gray.600'
         onClick={onOpenLogin}
-      >Ingresar</Button>
+      >
+        Ingresar
+      </Button>
       <LoginModal isOpen={isOpenLogin} onClose={onCloseLogin} onOpenRegister={onOpenRegister}/>
       <RegisterModal isOpen={isOpenRegister} onClose={onCloseRegister} onOpenLogin={onOpenLogin}/>
     </>

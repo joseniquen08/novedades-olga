@@ -1,12 +1,12 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation } from '@apollo/client';
 import { Badge, Box, Button, FormControl, FormErrorMessage, FormLabel, HStack, Input, InputGroup, InputRightAddon, Text, VStack } from '@chakra-ui/react';
-import { useRouter } from "next/router";
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
-import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import Cookies from "universal-cookie";
+import { useRouter } from 'next/router';
+import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
+import Cookies from 'universal-cookie';
 
 const SIGN_IN_ADMIN = gql`
-  mutation SifnInAdmin($input: LoginInput) {
+  mutation SignInAdmin($input: LoginInput) {
     loginAdmin(input: $input) {
       token
       errors {
@@ -16,7 +16,7 @@ const SIGN_IN_ADMIN = gql`
   }
 `;
 
-export const Login = () => {
+export const Login: React.FC = () => {
 
   const cookies = new Cookies();
   const router = useRouter();
@@ -25,10 +25,10 @@ export const Login = () => {
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const [showPassword, setShowPassword] = useState(false);
-  const [emailNotFoundError, setEmailNotFoundError] = useState(false);
-  const [emailNotAdmin, setEmailNotAdmin] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [emailNotFoundError, setEmailNotFoundError] = useState<boolean>(false);
+  const [emailNotAdmin, setEmailNotAdmin] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
 
   const handleShowPassword = (): void => {
     setShowPassword(showPassword => !showPassword);
@@ -68,8 +68,8 @@ export const Login = () => {
           setEmailNotAdmin(true);
         }
       } else {
-        cookies.set("token", data.loginAdmin.token, { path: '/' });
-        router.push("/admin/store");
+        cookies.set('token', data.loginAdmin.token, { path: '/' });
+        router.push('/admin/store');
       }
     }
   }, [data, loading]);
@@ -123,11 +123,10 @@ export const Login = () => {
                     borderColor: 'gray.400',
                   }}
                   placeholder=' '
-                  fontWeight={500}
                   onChange={handleEmail}
                   autoFocus
                 />
-                <FormLabel color='gray.500' htmlFor='email'>Correo electrónico</FormLabel>
+                <FormLabel color='gray.500' fontWeight={400} htmlFor='email'>Correo electrónico</FormLabel>
                 {
                   emailNotFoundError && (
                     <FormErrorMessage>El correo no se encuentra registrado.</FormErrorMessage>
@@ -150,10 +149,9 @@ export const Login = () => {
                       borderColor: 'gray.400',
                     }}
                     placeholder=' '
-                    fontWeight={500}
                     onChange={handlePassword}
                   />
-                  <FormLabel color='gray.500' htmlFor='password'>Contraseña</FormLabel>
+                  <FormLabel color='gray.500' fontWeight={400} htmlFor='password'>Contraseña</FormLabel>
                   <InputRightAddon
                     bg='blackAlpha.300'
                     px={0}

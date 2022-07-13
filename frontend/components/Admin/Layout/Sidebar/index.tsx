@@ -1,7 +1,7 @@
 import { Avatar, Button, Divider, HStack, Tooltip, VStack, Wrap, WrapItem } from '@chakra-ui/react';
-import Image from "next/image";
+import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { FiBox, FiGrid, FiSettings, FiTruck, FiUsers } from "react-icons/fi";
+import { FiBox, FiGrid, FiSettings, FiTruck, FiUsers } from 'react-icons/fi';
 import { SideItem } from './SideItem';
 
 export const Sidebar = (props: any) => {

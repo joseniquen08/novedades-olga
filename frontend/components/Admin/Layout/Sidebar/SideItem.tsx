@@ -1,5 +1,5 @@
-import { Button, Tooltip } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { Button, Tooltip } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 type Props = {
   label: string;

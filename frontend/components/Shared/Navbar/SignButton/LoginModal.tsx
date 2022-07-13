@@ -17,9 +17,9 @@ const MotionButton = motion(Button);
 
 export const LoginModal = ({ isOpen, onClose, onOpenRegister }: Props) => {
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
