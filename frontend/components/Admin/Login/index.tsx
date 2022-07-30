@@ -29,6 +29,7 @@ export const Login: React.FC = () => {
   const [emailNotFoundError, setEmailNotFoundError] = useState<boolean>(false);
   const [emailNotAdmin, setEmailNotAdmin] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleShowPassword = (): void => {
     setShowPassword(showPassword => !showPassword);
@@ -43,10 +44,11 @@ export const Login: React.FC = () => {
     setPasswordError(false);
   }
 
-  const login = (e: FormEvent<HTMLDivElement>): void => {
+  const login = async (e: FormEvent<HTMLDivElement>): Promise<void> => {
     e.preventDefault();
     if (emailRef.current?.value !== '' && passwordRef.current?.value !== '') {
-      loginAdmin({
+      setIsLoading(true);
+      await loginAdmin({
         variables: {
           input: {
             email: emailRef.current?.value,
@@ -62,16 +64,20 @@ export const Login: React.FC = () => {
       if (data.loginAdmin.errors) {
         if (data.loginAdmin.errors.message === 'email not found') {
           setEmailNotFoundError(true);
+          setIsLoading(false);
         } else if (data.loginAdmin.errors.message === 'invalid password') {
           setPasswordError(true);
+          setIsLoading(false);
         } else if (data.loginAdmin.errors.message === 'not admin') {
           setEmailNotAdmin(true);
+          setIsLoading(false);
         }
       } else {
         cookies.set('token', data.loginAdmin.token, { path: '/' });
         router.push('/admin/store');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, loading]);
 
   return (
@@ -81,15 +87,16 @@ export const Login: React.FC = () => {
       backgroundColor='white'
       justifyContent='center'
       alignItems='center'
+      background='gray.50'
     >
       <Box
         maxWidth='md'
         width='full'
-        border='1px solid'
-        borderColor='gray.300'
+        boxShadow='xl'
         rounded='lg'
         paddingX='2.5rem'
         paddingY='2rem'
+        background='white'
       >
         <Box>
           <Box>
@@ -175,7 +182,18 @@ export const Login: React.FC = () => {
               </FormControl>
             </VStack>
             <Box width='full'>
-              <Button type='submit' colorScheme='gray' width='full'>Ingresar</Button>
+              <Button
+                type='submit'
+                isLoading={isLoading}
+                colorScheme='gray'
+                width='full'
+                _hover={{
+                  transform: 'translateY(-1px)',
+                  boxShadow: 'lg',
+                }}
+              >
+                Ingresar
+              </Button>
             </Box>
           </VStack>
         </Box>

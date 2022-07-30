@@ -25,6 +25,9 @@
       "@comp-home/*": [
         "components/Home/*"
       ],
+      "@custom-types/*": [
+        "types/*"
+      ],
       "@utils/*": [
         "utils/*"
       ],

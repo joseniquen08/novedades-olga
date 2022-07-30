@@ -1,12 +1,19 @@
-import { Avatar, Button, Divider, HStack, Tooltip, VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Avatar, Button, ButtonGroup, Divider, HStack, Popover, PopoverBody, PopoverContent, PopoverTrigger, Portal, Tooltip, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FiBox, FiGrid, FiSettings, FiTruck, FiUsers } from 'react-icons/fi';
+import Cookies from 'universal-cookie';
 import { SideItem } from './SideItem';
 
 export const Sidebar = (props: any) => {
 
+  const cookies = new Cookies();
   const router = useRouter();
+
+  const logout = () => {
+    cookies.remove('token', { path: '/' });
+    router.reload();
+  }
 
   return (
     <VStack
@@ -26,6 +33,7 @@ export const Sidebar = (props: any) => {
       borderColor='gray.300'
       justifyContent='space-between'
       flex='none'
+      zIndex={50}
     >
       <VStack
         width='full'
@@ -78,13 +86,26 @@ export const Sidebar = (props: any) => {
         </VStack>
       </VStack>
       <VStack>
-        <Wrap>
-          <WrapItem>
-            <Tooltip hasArrow label='Perfil' placement='right' paddingX='0.75rem'>
-              <Avatar as='button' size='md' name='Kent Dodds' src='https://bit.ly/kent-c-dodds' />
-            </Tooltip>
-          </WrapItem>
-        </Wrap>
+        <Popover placement='right-start'>
+          <PopoverTrigger>
+            <Avatar as='button' size='md' name='Kent Dodds' src='https://bit.ly/kent-c-dodds' />
+          </PopoverTrigger>
+          <Portal>
+            <PopoverContent width='11rem' background='white'>
+              <PopoverBody padding={0}>
+                <ButtonGroup flexDirection='column' spacing={0} width='full'>
+                  <Button width='full' rounded={0} variant='ghost' fontWeight={400}>
+                    Perfil
+                  </Button>
+                  <Divider/>
+                  <Button onClick={() => logout()} width='full' rounded={0} variant='ghost' fontWeight={400}>
+                    Cerrar sesión
+                  </Button>
+                </ButtonGroup>
+              </PopoverBody>
+            </PopoverContent>
+          </Portal>
+        </Popover>
       </VStack>
     </VStack>
   )

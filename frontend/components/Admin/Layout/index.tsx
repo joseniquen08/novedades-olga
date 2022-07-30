@@ -1,8 +1,10 @@
 import { Box, HStack } from '@chakra-ui/react';
+import { UserType } from '@custom-types/auth';
 import { Sidebar } from './Sidebar';
 
 type Props = {
   children: JSX.Element;
+  user: UserType;
 }
 
 export const Layout = ({ children }: Props) => {

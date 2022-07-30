@@ -11,6 +11,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import client from '../apollo-client';
+import '../theme/styles.css';
 import theme from '../theme/theme.chakra';
 
 function App ({ Component, pageProps: { session, ...pageProps } }: AppProps) {
