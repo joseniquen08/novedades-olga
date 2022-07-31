@@ -1,4 +1,4 @@
-import { Avatar, Button, ButtonGroup, Divider, HStack, Popover, PopoverBody, PopoverContent, PopoverTrigger, Portal, Tooltip, VStack } from '@chakra-ui/react';
+import { Avatar, Button, ButtonGroup, Divider, HStack, Popover, PopoverBody, PopoverContent, PopoverTrigger, Portal, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FiBox, FiGrid, FiSettings, FiTruck, FiUsers } from 'react-icons/fi';
@@ -29,11 +29,10 @@ export const Sidebar = (props: any) => {
       flexDirection='column'
       paddingX='0.6rem'
       paddingY='1rem'
-      borderRight='1px solid'
-      borderColor='gray.300'
       justifyContent='space-between'
       flex='none'
       zIndex={50}
+      backgroundColor='purple.300'
     >
       <VStack
         width='full'
@@ -43,21 +42,20 @@ export const Sidebar = (props: any) => {
           paddingBottom={3}
           justifyContent='center'
         >
-          <Tooltip hasArrow label='Inicio' placement='right' paddingX='0.75rem'>
-            <Button
-              variant='unstyled'
-              width='3rem'
-              height='3rem'
-              position='relative'
-              onClick={() => router.push('/admin/store')}
-            >
-              <Image
-                src='/images/isotipo.png'
-                alt='Logo'
-                layout='fill'
-              />
-            </Button>
-          </Tooltip>
+          <Button
+            variant='unstyled'
+            width='3rem'
+            height='3rem'
+            position='relative'
+            cursor='default'
+            backgroundColor='white'
+          >
+            <Image
+              src='/images/isotipo.png'
+              alt='Logo'
+              layout='fill'
+            />
+          </Button>
         </HStack>
         <Divider/>
         <VStack
@@ -65,7 +63,7 @@ export const Sidebar = (props: any) => {
           paddingY='0.5rem'
           spacing='0.6rem'
         >
-          <SideItem label='Resumen' path='/admin/store/resume' active={router.pathname.split('/')[3] === 'resume'}>
+          <SideItem label='Resumen' path='/admin/store' active={router.pathname.split('/')[2] === 'store' && !router.pathname.split('/')[3]}>
             <FiGrid/>
           </SideItem>
           <SideItem label='Productos' path='/admin/store/products' active={router.pathname.split('/')[3] === 'products'}>

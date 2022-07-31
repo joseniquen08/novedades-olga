@@ -1,13 +1,14 @@
 import { Layout } from '@comp-admin/Layout';
+import { ProductsComponent } from '@comp-admin/Products';
 import { UserType } from '@custom-types/auth';
 import decodeToken from '@utils/decodeToken';
 import type { NextPage } from 'next';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-const Users: NextPage = ({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Products: NextPage = ({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <Layout user={user}>
-      <p>Users</p>
+      <ProductsComponent/>
     </Layout>
   )
 }
@@ -32,4 +33,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default Users;
+export default Products;

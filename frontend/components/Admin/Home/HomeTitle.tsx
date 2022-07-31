@@ -1,12 +1,16 @@
 import { Box, Divider, Text } from "@chakra-ui/react";
 
-export const HomeTitle = ({ name }: { name: string }) => {
+type Props = {
+  name: string;
+}
+
+export const HomeTitle = ({ name }: Props) => {
   return (
     <Box>
       <Text
-        fontSize='1.5rem'
-        fontWeight={500}
-        color='gray.800'
+        fontSize='1.7rem'
+        fontWeight={600}
+        color='purple.800'
       >
         Bienvenid@, {name}
       </Text>

@@ -16,8 +16,12 @@ export const SideItem = ({ label, path, active, children }: Props) => {
     <Tooltip hasArrow label={label} placement='right' paddingX='0.75rem'>
       <Button
         variant='ghost'
-        bg={active ? 'gray.100' : 'transparent'}
-        color='gray.600'
+        colorScheme='blackAlpha'
+        bg={active ? 'blackAlpha.300' : 'transparent'}
+        _hover={{
+          background: active ? 'blackAlpha.300' : 'blackAlpha.100',
+        }}
+        color='white'
         fontSize='2xl'
         onClick={() => router.push(path)}
       >

@@ -87,7 +87,7 @@ export const Login: React.FC = () => {
       backgroundColor='white'
       justifyContent='center'
       alignItems='center'
-      background='gray.50'
+      background='purple.50'
     >
       <Box
         maxWidth='md'
@@ -102,13 +102,13 @@ export const Login: React.FC = () => {
           <Box>
             <Text
               align='center'
-              fontSize='1.8rem'
+              fontSize='2rem'
               fontWeight={600}
-              color='gray.700'
+              color='purple.800'
             >
               Iniciar Sesión
             </Text>
-            <Text align='center' fontSize='1rem'>como <Badge variant='outline'>Admin</Badge></Text>
+            <Text align='center' fontSize='1rem'>como <Badge colorScheme='purple' variant='outline'>Admin</Badge></Text>
           </Box>
           <VStack
             as='form'
@@ -165,7 +165,7 @@ export const Login: React.FC = () => {
                     py={0}
                   >
                     <Button
-                      color='gray.400'
+                      color='gray.500'
                       onClick={handleShowPassword}
                       roundedBottomLeft={0}
                       roundedTopLeft={0}
@@ -185,12 +185,17 @@ export const Login: React.FC = () => {
               <Button
                 type='submit'
                 isLoading={isLoading}
-                colorScheme='gray'
                 width='full'
+                backgroundColor='purple.400'
                 _hover={{
                   transform: 'translateY(-1px)',
                   boxShadow: 'lg',
+                  backgroundColor: 'purple.400'
                 }}
+                _active={{
+                  backgroundColor: 'purple.500'
+                }}
+                color='white'
               >
                 Ingresar
               </Button>

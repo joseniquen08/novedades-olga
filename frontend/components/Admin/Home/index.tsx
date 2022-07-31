@@ -1,5 +1,6 @@
-import { Box, Divider, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import { UserType } from '@custom-types/auth';
+import { HomeCard } from './HomeCard';
 import { HomeTitle } from './HomeTitle';
 
 type Props = {
@@ -28,72 +29,9 @@ export const Home = ({ user }: Props) => {
             columns={3}
             spacing={5}
           >
-            <VStack
-              spacing='1rem'
-              rounded='xl'
-              paddingX='1.5rem'
-              paddingY='1rem'
-              boxShadow='lg'
-              width='full'
-              background='white'
-            >
-              <Text width='full' fontSize='1.2rem'>Últimas ventas</Text>
-              <VStack width='full' spacing='0.75rem'>
-                <Box>1. Prueba</Box>
-                <Divider/>
-                <Box>2. Prueba</Box>
-                <Divider/>
-                <Box>3. Prueba</Box>
-                <Divider/>
-                <Box>4. Prueba</Box>
-                <Divider/>
-                <Box>5. Prueba</Box>
-              </VStack>
-            </VStack>
-            <VStack
-              spacing='1rem'
-              rounded='xl'
-              paddingX='1.5rem'
-              paddingY='1rem'
-              boxShadow='lg'
-              width='full'
-              background='white'
-            >
-              <Text width='full' fontSize='1.2rem'>Últimas ventas</Text>
-              <VStack width='full' spacing='0.75rem'>
-                <Box>1. Prueba</Box>
-                <Divider/>
-                <Box>2. Prueba</Box>
-                <Divider/>
-                <Box>3. Prueba</Box>
-                <Divider/>
-                <Box>4. Prueba</Box>
-                <Divider/>
-                <Box>5. Prueba</Box>
-              </VStack>
-            </VStack>
-            <VStack
-              spacing='1rem'
-              rounded='xl'
-              paddingX='1.5rem'
-              paddingY='1rem'
-              boxShadow='lg'
-              width='full'
-              background='white'
-            >
-              <Text width='full' fontSize='1.2rem'>Últimas ventas</Text>
-              <VStack width='full' spacing='0.75rem'>
-                <Box>1. Prueba</Box>
-                <Divider/>
-                <Box>2. Prueba</Box>
-                <Divider/>
-                <Box>3. Prueba</Box>
-                <Divider/>
-                <Box>4. Prueba</Box>
-                <Divider/>
-                <Box>5. Prueba</Box>
-              </VStack>
-            </VStack>
+            <HomeCard title='Últimas ventas'/>
+            <HomeCard title='Últimas ventas'/>
+            <HomeCard title='Últimas ventas'/>
           </SimpleGrid>
         </Box>
       </Box>
