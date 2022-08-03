@@ -1,5 +1,6 @@
 import { gql } from "apollo-server-express";
 import { Auth } from "./Auth";
+import { Product } from "./Product";
 
 const typeDefs = gql`
   type Error {
@@ -7,13 +8,16 @@ const typeDefs = gql`
   }
 
   ${Auth.types}
+  ${Product.types}
 
   type Query {
     ${Auth.queries}
+    ${Product.queries}
   }
 
   type Mutation {
     ${Auth.mutations}
+    ${Product.mutations}
   }
 `;
 
