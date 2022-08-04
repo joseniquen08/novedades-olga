@@ -19,7 +19,10 @@ const theme = extendTheme({
                 ...activeLabelStyles,
               },
             },
-            'input:not(:placeholder-shown) + label, .chakra-select__wraper + label': {
+            'input:not(:placeholder-shown) + label, .chakra-select__wrapper + label': {
+              ...activeLabelStyles,
+            },
+            'textarea:not(:placeholder-shown) + label': {
               ...activeLabelStyles,
             },
             label: {
