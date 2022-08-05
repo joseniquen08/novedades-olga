@@ -33,8 +33,9 @@ export const ProductsComponent = () => {
             <TabList>
               <Tab>Tejido</Tab>
               <Tab>Costura</Tab>
-              <Tab>Joyas</Tab>
-              <Tab isDisabled>Próximamente</Tab>
+              <Tab>Bisutería</Tab>
+              <Tab>Bordados</Tab>
+              <Tab>Muñequería</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -45,6 +46,12 @@ export const ProductsComponent = () => {
               </TabPanel>
               <TabPanel>
                 <p>three!</p>
+              </TabPanel>
+              <TabPanel>
+                <p>four!</p>
+              </TabPanel>
+              <TabPanel>
+                <p>five!</p>
               </TabPanel>
             </TabPanels>
           </Tabs>

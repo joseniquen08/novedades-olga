@@ -4,7 +4,6 @@ import { AddProductService } from "../entity/types/productTypes";
 export const getAllProductsService = async () => {
   try {
     const products = await ProductModel.find({});
-    console.log(products);
     return {
       products,
     };

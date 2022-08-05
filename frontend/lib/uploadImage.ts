@@ -1,4 +1,4 @@
-export const uploadImageService = async (image: string) => {
+export const uploadImageService = async (image: File) => {
   try {
     const formData = new FormData();
     formData.append('image', image);

@@ -1,11 +1,26 @@
+import { gql, useMutation } from '@apollo/client';
 import { Box, Button, FormControl, FormLabel, HStack, Icon, IconButton, Img, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberInput, NumberInputField, Select, Text, Textarea, VStack } from '@chakra-ui/react';
 import { ChangeEvent, FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { FiEdit3, FiImage } from 'react-icons/fi';
+import { uploadImageService } from '../../../lib/uploadImage';
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const ADD_PRODUCT = gql`
+  mutation AddProduct($input: AddProductInput) {
+    addProduct(input: $input) {
+      product {
+        name
+      }
+      errors {
+        message
+      }
+    }
+  }
+`;
 
 export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
 
@@ -22,6 +37,10 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
   const [categoryProduct, setCategoryProduct] = useState<string>('');
 
   const [imageError, setImageError] = useState<boolean>(false);
+
+  const [isLoadingAddProduct, setIsLoadingAddProduct] = useState<boolean>(false);
+
+  const [addProductMutation, { data: dataProduct, loading: isLoadingAddProductMutation }] = useMutation(ADD_PRODUCT);
 
   const processImage = (e: ChangeEvent<HTMLInputElement>) => {
     const imageUrl = URL.createObjectURL(e.currentTarget.files![0]);
@@ -49,7 +68,6 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
   }
 
   const stockKeyboardHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    console.log(e.key);
     if (e.key == 'Backspace') {
       setStockValue(val => {
         return Math.floor(val/10);
@@ -67,7 +85,27 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
 
   const addProduct = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
-    if (fileRef.current?.files?.length === 0) setImageError(true);
+    if (fileRef.current?.files?.length === 0) {
+      setImageError(true);
+    } else {
+      setIsLoadingAddProduct(true);
+      const imageUrl = await uploadImageService(fileRef.current!.files![0]);
+      if (imageUrl) {
+        await addProductMutation({
+          variables: {
+            input: {
+              name: nameProductRef.current!.value,
+              description: descriptionProductRef.current!.value,
+              price: parseFloat(priceProductRef.current!.value),
+              image: imageUrl,
+              category: categoryProduct,
+              stock: parseInt(stockProductRef.current!.value)
+            },
+          },
+        });
+      }
+      setIsLoadingAddProduct(false);
+    }
   }
 
   useEffect(() => {
@@ -87,6 +125,17 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
       setPriceValue('0.00');
     }
   }, [priceKeyboard]);
+
+  useEffect(() => {
+    if (!isLoadingAddProductMutation && !isLoadingAddProduct && dataProduct) {
+      onClose();
+      setImage(undefined);
+      setPriceValue('0.00');
+      setStockValue(0);
+      // refetch();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataProduct, isLoadingAddProductMutation, isLoadingAddProduct]);
 
   return (
     <Modal
@@ -221,7 +270,9 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
                 >
                   <option value='Tejido'>Tejido</option>
                   <option value='Costura'>Costura</option>
-                  <option value='Joyas'>Joyas</option>
+                  <option value='Joyas'>Bisutería</option>
+                  <option value='Joyas'>Bordados</option>
+                  <option value='Joyas'>Muñequería</option>
                 </Select>
               </FormControl>
               <FormControl isRequired variant="floating">
@@ -272,7 +323,7 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
           </VStack>
         </ModalBody>
         <ModalFooter>
-          <Button type="submit" colorScheme='purple'>Agregar</Button>
+          <Button isLoading={isLoadingAddProduct} type="submit" colorScheme='purple'>Agregar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
