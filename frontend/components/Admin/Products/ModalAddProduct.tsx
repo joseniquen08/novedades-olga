@@ -1,12 +1,21 @@
 import { gql, useMutation } from '@apollo/client';
 import { Box, Button, FormControl, FormLabel, HStack, Icon, IconButton, Img, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberInput, NumberInputField, Select, Text, Textarea, VStack } from '@chakra-ui/react';
+import { uploadImageService } from '@lib/uploadImage';
+import { setRefetchAddProduct } from '@store/features/products/productSlice';
 import { ChangeEvent, FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { FiEdit3, FiImage } from 'react-icons/fi';
-import { uploadImageService } from '../../../lib/uploadImage';
+import { useDispatch } from 'react-redux';
+
+interface CategoryType {
+  name: string;
+  tag: string;
+  status: string;
+}
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  categories: CategoryType[];
 }
 
 const ADD_PRODUCT = gql`
@@ -22,7 +31,7 @@ const ADD_PRODUCT = gql`
   }
 `;
 
-export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
+export const ModalAddProduct = ({ isOpen, onClose, categories }: Props) => {
 
   const fileRef = useRef<HTMLInputElement>(null);
   const nameProductRef = useRef<HTMLInputElement>(null);
@@ -39,6 +48,8 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
   const [imageError, setImageError] = useState<boolean>(false);
 
   const [isLoadingAddProduct, setIsLoadingAddProduct] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
 
   const [addProductMutation, { data: dataProduct, loading: isLoadingAddProductMutation }] = useMutation(ADD_PRODUCT);
 
@@ -132,7 +143,7 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
       setImage(undefined);
       setPriceValue('0.00');
       setStockValue(0);
-      // refetch();
+      dispatch(setRefetchAddProduct(true));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataProduct, isLoadingAddProductMutation, isLoadingAddProduct]);
@@ -268,11 +279,11 @@ export const ModalAddProduct = ({ isOpen, onClose }: Props) => {
                   }}
                   onChange={handleSelectCategory}
                 >
-                  <option value='Tejido'>Tejido</option>
-                  <option value='Costura'>Costura</option>
-                  <option value='Joyas'>Bisutería</option>
-                  <option value='Joyas'>Bordados</option>
-                  <option value='Joyas'>Muñequería</option>
+                  {
+                    categories.map(({ name, tag }) => (
+                      <option key={tag} value={tag}>{name}</option>
+                    ))
+                  }
                 </Select>
               </FormControl>
               <FormControl isRequired variant="floating">

@@ -31,6 +31,12 @@
       "@utils/*": [
         "utils/*"
       ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
     },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

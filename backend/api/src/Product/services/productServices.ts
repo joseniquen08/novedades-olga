@@ -12,6 +12,17 @@ export const getAllProductsService = async () => {
   }
 }
 
+export const getProductsByTagService = async (tag: string) => {
+  try {
+    const products = await ProductModel.find({ category: tag });
+    return {
+      products,
+    };
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
 export const addProductService = async (input: AddProductService) => {
   try {
     const product = new ProductModel(input);

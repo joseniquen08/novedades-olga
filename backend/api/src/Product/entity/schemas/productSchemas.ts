@@ -21,7 +21,6 @@ export const ProductSchema = new Schema<IProduct>({
   category: {
     type: String,
     required: true,
-    enum: ["Tejidos", "Costura", "Bisutería", "Bordados", "Muñequería"],
   },
   stock: {
     type: Number,

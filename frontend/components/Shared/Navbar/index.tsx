@@ -47,6 +47,7 @@ export const Navbar = () => {
             </Box>
             <Heading
               fontSize='3xl'
+              fontWeight={400}
             >Novedades Olga</Heading>
           </HStack>
           <HStack

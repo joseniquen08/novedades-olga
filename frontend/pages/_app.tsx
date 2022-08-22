@@ -1,17 +1,13 @@
-import '@fontsource/amatic-sc/700.css';
-import '@fontsource/poppins/300.css';
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/500.css';
-import '@fontsource/poppins/600.css';
-import '@fontsource/poppins/700.css';
-import '@fontsource/poppins/800.css';
-import '@fontsource/poppins/900.css';
+import '@fontsource/amatic-sc';
+import '@fontsource/poppins';
 
 import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Provider } from 'react-redux';
 import client from '../apollo-client';
+import { store } from '../store/index';
 import '../theme/styles.css';
 import theme from '../theme/theme.chakra';
 
@@ -25,7 +21,9 @@ function App ({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       </Head>
       <ApolloProvider client={client}>
         <ChakraProvider theme={theme}>
-          <Component {...pageProps} />
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
         </ChakraProvider>
       </ApolloProvider>
     </>

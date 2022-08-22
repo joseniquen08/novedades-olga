@@ -7,6 +7,9 @@ const nextConfig = {
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true,
+  },
+  images: {
+    domains: ['res.cloudinary.com'],
   }
 }
 
