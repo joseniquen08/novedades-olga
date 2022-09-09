@@ -3,7 +3,7 @@ import { Box, IconButton, Spinner, Tab, TabList, TabPanel, TabPanels, Tabs, useD
 import { GetAllCategoriesDataType } from '@custom-types/admin/productTypes';
 import { FiEdit } from 'react-icons/fi';
 import { ProductsTitle } from './ProductsTitle';
-import { TabPanelContent } from './TabPanelContent';
+import { TableListProducts } from './TableListProducts';
 
 const GET_ALL_CATEGORIES = gql`
   query GetAllCategories {
@@ -25,6 +25,8 @@ export const ProductsComponent = () => {
   const { isOpen: isOpenAddProduct, onOpen: onOpenAddProduct, onClose: onCloseAddProduct } = useDisclosure();
 
   const { loading: loadingCategories, data: dataCategories } = useQuery<GetAllCategoriesDataType>(GET_ALL_CATEGORIES);
+
+  // "/images/logotipo_fondo_blanco.png"
 
   return (
     <Box
@@ -79,10 +81,17 @@ export const ProductsComponent = () => {
                       />
                     </TabList>
                     <TabPanels>
-                      {
+                      {/* {
                         dataCategories && dataCategories.getAllCategories.categories.map(({ name, tag, status }) => (
                           <TabPanel key={tag} padding={0}>
                             <TabPanelContent name={name} tag={tag}/>
+                          </TabPanel>
+                        ))
+                      } */}
+                      {
+                        dataCategories && dataCategories.getAllCategories.categories.map(({ name, tag, status }) => (
+                          <TabPanel key={tag} padding='1.25rem 0.5rem'>
+                            <TableListProducts name={name} tag={tag}/>
                           </TabPanel>
                         ))
                       }

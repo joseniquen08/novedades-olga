@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "@comp-admin/*": [
         "components/Admin/*"
@@ -37,6 +37,9 @@
       "@store/*": [
         "store/*"
       ],
+      "@theme/*": [
+        "theme/*"
+      ]
     },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
