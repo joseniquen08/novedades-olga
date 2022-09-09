@@ -5,7 +5,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start:dev": "ts-node-dev api/index.ts"
+    "start:dev": "ts-node-dev api/index.ts",
+    "build": "tsc",
+    "start": "node build/index.js"
   },
   "dependencies": {
     "apollo-server-core": "^3.9.0",
