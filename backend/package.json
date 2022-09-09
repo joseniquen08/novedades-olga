@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start:dev": "ts-node-dev api/index.ts",
-    "build": "tsc",
+    "build": "yarn && tsc",
     "start": "node build/index.js"
   },
   "dependencies": {
